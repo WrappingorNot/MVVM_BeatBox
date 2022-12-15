@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
             layoutManager = GridLayoutManager(context, 3)
             adapter = SoundAdapter()
         }
+
     }
 
     private inner class SoundHolder(private val binding: ListItemSoundBinding):
