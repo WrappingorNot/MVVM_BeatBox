@@ -16,4 +16,11 @@ class SoundViewModel : BaseObservable() {
     val title: String?
         get() = sound?.name
 
+
+    fun onButtonClick(){
+
+    }
+
+
+
 }
