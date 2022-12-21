@@ -20,7 +20,4 @@ class SoundViewModel : BaseObservable() {
     fun onButtonClick(){
 
     }
-
-
-
 }
