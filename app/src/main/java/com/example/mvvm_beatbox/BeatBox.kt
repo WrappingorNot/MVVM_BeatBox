@@ -4,6 +4,7 @@ import android.content.res.AssetFileDescriptor
 import android.content.res.AssetManager
 import android.media.SoundPool
 import android.util.Log
+import java.io.IOException
 import java.lang.Exception
 
 
@@ -22,6 +23,11 @@ class BeatBox(private val assets:AssetManager) {
         val afd: AssetFileDescriptor = assets.openFd(sound.assetPath)
         val soundId = soundPool.load(afd, 1)
         sound.soundId = soundId
+    }
+    private fun play(sound: Sound){
+        sound.soundId?.let {
+            soundPool.play(it, 1.0f,1.0f,1,0,1.0f)
+        }
     }
 
     init{
@@ -43,7 +49,12 @@ class BeatBox(private val assets:AssetManager) {
         soundNames.forEach{filename ->
             val assetPath =  "$SOUND_FOLDER/$filename"
             val sound = Sound(assetPath)
-            sounds.add(sound)
+            try {
+                load(sound)
+                sounds.add(sound)
+            }catch (ioe: IOException){
+                Log.e(TAG, "Sound not load sound $filename", ioe)
+            }
         }
         return sounds
     }
