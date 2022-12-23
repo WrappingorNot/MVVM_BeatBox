@@ -5,7 +5,8 @@ import org.hamcrest.MatcherAssert
 import org.hamcrest.core.Is.`is`
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mockito
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.verify
 
 class SoundViewModelTest {
 
@@ -15,7 +16,7 @@ class SoundViewModelTest {
 
     @Before
     fun setup() {
-        beatBox = Mockito.mock(BeatBox::class.java)
+        beatBox = mock(BeatBox::class.java)
         sound = Sound("assetPath")
         subject = SoundViewModel(beatBox)
         subject.sound = sound
@@ -30,6 +31,6 @@ class SoundViewModelTest {
     fun callBeatBoxPlayOnButtonClicked(){
         subject.onButtonClick()
 
-        Mockito.verify(beatBox).play(sound)
+        verify(beatBox).play(sound)
     }
 }
