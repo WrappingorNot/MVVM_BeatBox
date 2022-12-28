@@ -13,6 +13,7 @@ class SoundViewModelTest {
     private lateinit var beatBox: BeatBox
     private lateinit var sound: Sound
     private lateinit var subject: SoundViewModel
+    private lateinit var sound1: Sound
 
     @Before
     fun setup() {
